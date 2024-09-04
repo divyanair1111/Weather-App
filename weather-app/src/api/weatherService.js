@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+// Use the environment variable for the API key instead of hardcoding it
 const API_URL = 'http://localhost:5000/weather';
-const API_KEY = '97c7014b915315fdd9966c507ede2e41'; 
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;  // Use the environment variable
+
 export const getWeather = async (city, unit = 'metric') => {
     try {
         const response = await axios.get(API_URL, {
@@ -20,7 +22,7 @@ export const getForecast = async (city, unit = 'metric') => {
         const response = await axios.get(`http://api.openweathermap.org/data/2.5/forecast`, {
             params: {
                 q: city,
-                appid: API_KEY,
+                appid: API_KEY,  // Use the environment variable
                 units: unit
             }
         });
@@ -38,7 +40,7 @@ export const getWeatherByCoordinates = async (lat, lon, unit = 'metric') => {
             params: {
                 lat,
                 lon,
-                appid: API_KEY,
+                appid: API_KEY,  // Use the environment variable
                 units: unit
             }
         });
@@ -56,7 +58,7 @@ export const getForecastByCoordinates = async (lat, lon, unit = 'metric') => {
             params: {
                 lat,
                 lon,
-                appid: API_KEY,
+                appid: API_KEY,  // Use the environment variable
                 units: unit
             }
         });
